@@ -1,7 +1,9 @@
-import express from 'express';
+import express from "express";
+import { getContacts } from "../controllers/contact";
 
-const router = express.Router();
+const contactRouter = express.Router();
 
-router.get('/contact');
+// GET contact (Read method)
+contactRouter.get("/contact", getContacts);
 
-module.exports = router;
+export default contactRouter;

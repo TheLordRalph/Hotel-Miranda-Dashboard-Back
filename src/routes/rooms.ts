@@ -1,12 +1,27 @@
-import express from 'express';
-import { getRooms } from '../controllers/roomsController';
+import express from "express";
+import {
+  getRooms,
+  getRoom,
+  postRoom,
+  putRoom,
+  deleteRoom,
+} from "../controllers/rooms";
 
-const router = express.Router();
+const roomsRouter = express.Router();
 
-router.get('/rooms', getRooms);
-router.post('/rooms/newroom');
-router.get('/rooms/:id');
-router.patch('/rooms/edit/:id');
-router.delete('/rooms/:id');
+// GET rooms (Read method)
+roomsRouter.get("/rooms", getRooms);
 
-module.exports = router;
+// GET single room (Read method)
+roomsRouter.get("/rooms/:roomId", getRoom);
+
+// POST a new room (Create method)
+roomsRouter.post("/newRoom", postRoom);
+
+// PUT a room (Update method)
+roomsRouter.put("/rooms/:roomId", putRoom);
+
+// DELETE single room (Delete method)
+roomsRouter.delete("/rooms/:roomId", deleteRoom);
+
+export default roomsRouter;
