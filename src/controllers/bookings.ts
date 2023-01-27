@@ -1,9 +1,9 @@
-export const getBookings = (req, res) => {
+export const getBookings = (req:any, res:any) => {
   const bookings = "Made it to the list of bookings";
   res.status(200).json(bookings);
 };
 
-export const getBooking = (req, res) => {
+export const getBooking = (req:any, res:any) => {
   const singleBooking = "Made it to the single booking";
   res.status(200).json(singleBooking);
 };

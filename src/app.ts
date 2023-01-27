@@ -1,23 +1,24 @@
 import express from "express";
 import passport from "passport";
-import loginRouter from "./routes/login";
-import bookingsRouter from "./routes/bookings";
+import { authRoute, bookingRoute } from "./routes";
 
-import("./auth/auth");
+import * as dotenv from "dotenv";
+dotenv.config();
+
+import("./middleware/auth");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  return res.json("build on");
-});
+app.use("/login", authRoute);
 
-app.use("/login", loginRouter);
-
-app.use("/bookings",passport.authenticate("jwt", { session: false }), bookingsRouter);
+app.use("/bookings", passport.authenticate("jwt", { session: false }), bookingRoute);
 
 app.listen(3000, () => {
   console.log("Server started.");
 });
+
+
+export default app;
