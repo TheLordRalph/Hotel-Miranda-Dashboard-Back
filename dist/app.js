@@ -33,10 +33,14 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 Promise.resolve().then(() => __importStar(require("./middleware/auth")));
 const app = (0, express_1.default)();
+const sessionPassport = passport_1.default.authenticate("jwt", { session: false });
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use("/login", routes_1.authRoute);
-app.use("/bookings", passport_1.default.authenticate("jwt", { session: false }), routes_1.bookingRoute);
+app.use("/rooms", sessionPassport, routes_1.roomsRouter);
+app.use("/bookings", sessionPassport, routes_1.bookingRoute);
+app.use("/users", sessionPassport, routes_1.usersRoute);
+app.use("/contacts", sessionPassport, routes_1.contactRoute);
 app.listen(3000, () => {
     console.log("Server started.");
 });

@@ -1,21 +1,44 @@
+const bookings = [
+  {
+      "id": "#00000001",
+      "nombre": "Cahyadi Purnomo",
+      "orderDate": "2022-04-17",
+      "checkIn": "2022-04-30",
+      "checkOut": "2022-05-02",
+      "specialRequest": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint rem sapiente neque officiis! Voluptatem recusandae voluptatum quae eum aspernatur voluptas perferendis itaque tempora aut cumque. Necessitatibus, neque. Laborum, accusamus cum.",
+      "tipoHabitacion": "Deluxe",
+      "numeroHabitacion": "A-03",
+      "status": "Refund"
+  },
+  {
+      "id": "#00000002",
+      "nombre": "Cahyadi Purnomo",
+      "orderDate": "2022-04-17",
+      "checkIn": "2022-04-30",
+      "checkOut": "2022-05-02",
+      "specialRequest": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint rem sapiente neque officiis! Voluptatem recusandae voluptatum quae eum aspernatur voluptas perferendis itaque tempora aut cumque. Necessitatibus, neque. Laborum, accusamus cum.",
+      "tipoHabitacion": "Deluxe",
+      "numeroHabitacion": "A-03",
+      "status": "Pending"
+  }
+]
+
 export const getBookings = (req:any, res:any) => {
-  const bookings = "Made it to the list of bookings";
   res.status(200).json(bookings);
 };
 
 export const getBooking = (req:any, res:any) => {
-  const singleBooking = "Made it to the single booking";
   res.status(200).json(singleBooking);
 };
 
-export const postBooking = () => {
-  console.log("Creating a new booking");
+export const postBooking = (req:any, res:any) => {
+  res.status(200).json(singleBooking);
 };
 
-export const putBooking = () => {
-  console.log("Update a single booking");
+export const putBooking = (req:any, res:any) => {
+  res.status(200).json(singleBooking);
 };
 
-export const deleteBooking = () => {
-  console.log("Deleting booking");
+export const deleteBooking = (req:any, res:any) => {
+  res.status(200).json(singleBooking);
 };

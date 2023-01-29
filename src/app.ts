@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { authRoute, bookingRoute } from "./routes";
+import { bookingRoute, roomsRouter, authRoute, contactRoute, usersRoute } from "./routes";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -8,13 +8,16 @@ dotenv.config();
 import("./middleware/auth");
 
 const app = express();
+const sessionPassport = passport.authenticate("jwt", { session: false });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/login", authRoute);
-
-app.use("/bookings", passport.authenticate("jwt", { session: false }), bookingRoute);
+app.use("/rooms", sessionPassport, roomsRouter);
+app.use("/bookings", sessionPassport, bookingRoute);
+app.use("/users", sessionPassport, usersRoute);
+app.use("/contacts", sessionPassport, contactRoute);
 
 app.listen(3000, () => {
   console.log("Server started.");

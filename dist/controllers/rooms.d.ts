@@ -1,5 +1,5 @@
-export declare const getRooms: () => void;
-export declare const getRoom: () => void;
-export declare const postRoom: () => void;
-export declare const putRoom: () => void;
-export declare const deleteRoom: () => void;
+export declare const getRooms: (req: any, res: any) => void;
+export declare const getRoom: (req: any, res: any) => void;
+export declare const postRoom: (req: any, res: any) => void;
+export declare const putRoom: (req: any, res: any) => void;
+export declare const deleteRoom: (req: any, res: any) => void;
