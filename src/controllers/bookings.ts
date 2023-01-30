@@ -28,17 +28,17 @@ export const getBookings = (req:any, res:any) => {
 };
 
 export const getBooking = (req:any, res:any) => {
-  res.status(200).json(singleBooking);
+  res.status(200).json(bookings);
 };
 
 export const postBooking = (req:any, res:any) => {
-  res.status(200).json(singleBooking);
+  res.status(200).json(bookings);
 };
 
 export const putBooking = (req:any, res:any) => {
-  res.status(200).json(singleBooking);
+  res.status(200).json(bookings);
 };
 
 export const deleteBooking = (req:any, res:any) => {
-  res.status(200).json(singleBooking);
+  res.status(200).json(bookings);
 };

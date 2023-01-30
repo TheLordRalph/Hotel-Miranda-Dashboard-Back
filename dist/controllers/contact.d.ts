@@ -1,1 +1,1 @@
-export declare const getContacts: () => void;
+export declare const getContacts: (req: any, res: any) => void;
