@@ -10,6 +10,6 @@ bcrypt.genSalt(saltRounds, function(err:any, salt:any) {
     connection.query(`INSERT INTO users (email, user, password, permissions) VALUES ('admin@hotelmiranda.com', 'admin', '${hash}', 'Administrator')`, (err:any, rows:any, fields:any) => {
       if (err) throw(err);
     });
-    connection.end()
+    connection.end();
   });
 });

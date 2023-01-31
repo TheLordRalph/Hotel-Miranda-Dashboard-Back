@@ -1,16 +1,26 @@
 import passport from "passport";
 import passportLocal from "passport-local";
 import passportJwt from "passport-jwt";
+import { sqlQuery, connection } from '../data/conection';
+
+const bcrypt = require('bcrypt');
 
 const localStrategy = passportLocal.Strategy;
 const JWTStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
 
-const currentUser = {
-  id: 1,
-  email: "admin@admin.com",
-  password: "1234",
+let user = {
+  idUser: 1,
+  email: '',
+  password: '',
 };
+
+interface userIn {
+  idUser: number,
+  email: string,
+  password: string,
+}
+
 
 passport.use(
   "login",
@@ -19,14 +29,25 @@ passport.use(
       usernameField: "email",
       passwordField: "password",
     },
-    (email: string, password: string, done) => {
-      const user = currentUser;
+    async (email: string, password: string, done) => {
       try {
-        if (email === "admin@admin.com" && password === "1234") {
+        connection.connect();
+        // const user: userIn = await sqlQuery('SELECT idUsers, email, password FROM users WHERE idUsers = 1', null)
+        // .then((user:userIn) => user);
+
+        const user:any = await new Promise<any>((resolve:any, reject:any) => {
+            connection.query('SELECT idUsers, email, password FROM users WHERE idUsers = 1;', (err:any, rows:any) => {
+                if (err) reject(err);
+                return resolve(rows[0]);
+            })
+        })
+
+        if (email === user.email && bcrypt.compareSync(password, user.password)) {
           return done(null, user, { message: "Logged in Successfully" });
         } else {
           return done(null, false, { message: "User not found" });
         }
+        connection.end();
       } catch (error) {
         console.log(error);
         return done(error);

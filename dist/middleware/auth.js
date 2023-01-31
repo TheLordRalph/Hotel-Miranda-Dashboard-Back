@@ -6,26 +6,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const passport_1 = __importDefault(require("passport"));
 const passport_local_1 = __importDefault(require("passport-local"));
 const passport_jwt_1 = __importDefault(require("passport-jwt"));
+const conection_1 = require("../data/conection");
+const bcrypt = require('bcrypt');
 const localStrategy = passport_local_1.default.Strategy;
 const JWTStrategy = passport_jwt_1.default.Strategy;
 const ExtractJwt = passport_jwt_1.default.ExtractJwt;
-const currentUser = {
-    id: 1,
-    email: "admin@admin.com",
-    password: "1234",
+let user = {
+    idUser: 1,
+    email: '',
+    password: '',
 };
 passport_1.default.use("login", new localStrategy({
     usernameField: "email",
     passwordField: "password",
-}, (email, password, done) => {
-    const user = currentUser;
+}, async (email, password, done) => {
     try {
-        if (email === "admin@admin.com" && password === "1234") {
+        conection_1.connection.connect();
+        // const user: userIn = await sqlQuery('SELECT idUsers, email, password FROM users WHERE idUsers = 1', null)
+        // .then((user:userIn) => user);
+        const user = await new Promise((resolve, reject) => {
+            conection_1.connection.query('SELECT idUsers, email, password FROM users WHERE idUsers = 1;', (err, rows) => {
+                if (err)
+                    reject(err);
+                console.log(rows[0]);
+                return resolve(rows[0]);
+            });
+        });
+        console.log(user);
+        if (email === user.email && bcrypt.compareSync(password, user.password)) {
             return done(null, user, { message: "Logged in Successfully" });
         }
         else {
             return done(null, false, { message: "User not found" });
         }
+        conection_1.connection.end();
     }
     catch (error) {
         console.log(error);
