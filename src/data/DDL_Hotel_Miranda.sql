@@ -48,6 +48,7 @@ CREATE TABLE contacts (
 
 CREATE TABLE employees (
   idEmployees INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  foto blob,
   nombre VARCHAR(60) NOT NULL,
   email VARCHAR(255) NOT NULL,
   fechaAlta TIMESTAMP NOT NULL,

@@ -47,8 +47,3 @@ INSERT INTO contacts (date, name, email, phone, subject, message) VALUES ('2023-
 
 INSERT INTO employees (nombre, email, fechaAlta, description, tlf, status) VALUES ('James Sitepu', 'jamesSitepu@hotelmiranda.com', '2017-08-02 09:00:00', 'Answering guest inquiries, directing phone calls, coordinating travel plans, and more.', '+34 876394540', 1);
 INSERT INTO employees (nombre, email, fechaAlta, description, tlf, status) VALUES ('Raul Moreta', 'raulmoretamartin@hotelmiranda.com', '2022-12-23 10:00:00', 'Answering guest inquiries, directing phone calls, coordinating travel plans, and more.', '+34 608759563', 1);
-
-
-/* INSERT INTO users */
-
-INSERT INTO users (email, user, password, permissions) VALUES ('admin@hotelmiranda.com', 'admin', 'Admin1234', 'Administrator');
