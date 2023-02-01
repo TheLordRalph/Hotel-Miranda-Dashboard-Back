@@ -1,28 +1,44 @@
-CREATE DATABASE hotel_miranda_pruebas IF NOT EXISTS hotel_miranda_pruebas;
+CREATE DATABASE hotel_miranda;
 
-use hotel_miranda_pruebas;
+use hotel_miranda;
 
 CREATE TABLE imagesRooms (
   idImagesRoom INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  imagen1 blob NOT NULL,
-  imagen2 blob NOT NULL,
-  imagen3 blob NOT NULL,
-  imagen4 blob,
-  imagen5 blob,
-  imagen6 blob
+  imagen blob NOT NULL
+);
+
+CREATE TABLE facilities (
+  idFacilities INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  facility VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE rooms (
   idHabitacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  images INT NOT NULL,
+  idRelacion INT NOT NULL,
   numeroHabitacion INT NOT NULL,
   roomType VARCHAR(30) NOT NULL,
-  amenities VARCHAR(255) NOT NULL,
   price INT NOT NULL,
   offerPercent INT,
-  status VARCHAR(20),
-  FOREIGN KEY (images) REFERENCES imagesRooms(idImagesRoom)
+  status VARCHAR(20)
 );
+
+CREATE TABLE images_relacion_rooms (
+  idRelacionImages INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  idHabitacion INT NOT NULL,
+  idImagesRoom INT NOT NULL,
+  FOREIGN KEY (idHabitacion) REFERENCES rooms(idHabitacion),
+  FOREIGN KEY (idImagesRoom) REFERENCES imagesRooms(idImagesRoom)
+);
+
+CREATE TABLE facilities_relacion_rooms (
+  idRelacionFacilities INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  idHabitacion INT NOT NULL,
+  idFacilities INT NOT NULL,
+  FOREIGN KEY (idHabitacion) REFERENCES rooms(idHabitacion),
+  FOREIGN KEY (idFacilities) REFERENCES facilities(idFacilities)
+);
+
+
 
 CREATE TABLE bookings (
   idBooking INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

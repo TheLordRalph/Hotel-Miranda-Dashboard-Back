@@ -9,14 +9,8 @@ const localStrategy = passportLocal.Strategy;
 const JWTStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
 
-let user = {
-  idUser: 1,
-  email: '',
-  password: '',
-};
 
 interface userIn {
-  idUser: number,
   email: string,
   password: string,
 }
@@ -32,11 +26,8 @@ passport.use(
     async (email: string, password: string, done) => {
       try {
         connection.connect();
-        // const user: userIn = await sqlQuery('SELECT idUsers, email, password FROM users WHERE idUsers = 1', null)
-        // .then((user:userIn) => user);
-
         const user:any = await new Promise<any>((resolve:any, reject:any) => {
-            connection.query('SELECT idUsers, email, password FROM users WHERE idUsers = 1;', (err:any, rows:any) => {
+            connection.query('SELECT email, password FROM users WHERE idUsers = 1;', (err:any, rows:any) => {
                 if (err) reject(err);
                 return resolve(rows[0]);
             })

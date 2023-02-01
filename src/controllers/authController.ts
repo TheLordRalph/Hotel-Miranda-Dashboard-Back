@@ -11,7 +11,7 @@ export const postLogin = (req:any, res:any, next:any) => {
         error
           ? next(error)
           : res.json(
-              jwt.sign({ user: { id: user.id, email: user.email } }, process.env.SECRET_TOKEN!)
+              jwt.sign({ user: { email: user.email } }, process.env.SECRET_TOKEN!)
             )
       );
     } catch (error) {
