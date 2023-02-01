@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const passport_1 = __importDefault(require("passport"));
 const passport_local_1 = __importDefault(require("passport-local"));
 const passport_jwt_1 = __importDefault(require("passport-jwt"));
-const conection_1 = require("../data/conection");
+const conection_1 = __importDefault(require("../data/conection"));
 const bcrypt = require('bcrypt');
 const localStrategy = passport_local_1.default.Strategy;
 const JWTStrategy = passport_jwt_1.default.Strategy;
@@ -16,9 +16,8 @@ passport_1.default.use("login", new localStrategy({
     passwordField: "password",
 }, async (email, password, done) => {
     try {
-        conection_1.connection.connect();
         const user = await new Promise((resolve, reject) => {
-            conection_1.connection.query('SELECT email, password FROM users WHERE idUsers = 1;', (err, rows) => {
+            conection_1.default.query('SELECT email, password FROM users WHERE idUsers = 1;', (err, rows) => {
                 if (err)
                     reject(err);
                 return resolve(rows[0]);
@@ -30,7 +29,6 @@ passport_1.default.use("login", new localStrategy({
         else {
             return done(null, false, { message: "User not found" });
         }
-        conection_1.connection.end();
     }
     catch (error) {
         console.log(error);

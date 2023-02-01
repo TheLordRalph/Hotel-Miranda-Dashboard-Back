@@ -4,7 +4,7 @@ use hotel_miranda;
 
 CREATE TABLE imagesRooms (
   idImagesRoom INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  imagen blob NOT NULL
+  imagen VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE facilities (
@@ -14,7 +14,6 @@ CREATE TABLE facilities (
 
 CREATE TABLE rooms (
   idHabitacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  idRelacion INT NOT NULL,
   numeroHabitacion INT NOT NULL,
   roomType VARCHAR(30) NOT NULL,
   price INT NOT NULL,

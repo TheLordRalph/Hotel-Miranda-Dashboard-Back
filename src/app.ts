@@ -1,6 +1,7 @@
 import express from "express";
 import passport from "passport";
 import { bookingRoute, roomsRouter, authRoute, contactRoute, usersRoute } from "./routes";
+import connection from './data/conection';
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -13,6 +14,7 @@ const sessionPassport = passport.authenticate("jwt", { session: false });
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+connection.connect();
 app.use("/login", authRoute);
 app.use("/rooms", sessionPassport, roomsRouter);
 app.use("/bookings", sessionPassport, bookingRoute);

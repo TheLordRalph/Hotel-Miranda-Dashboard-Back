@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-import { connection } from '../conection';
+import connection from '../conection';
 
 const saltRounds = 10;
 const myPlaintextPassword = 'Admin1234';

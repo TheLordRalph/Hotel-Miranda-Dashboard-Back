@@ -28,24 +28,24 @@ INSERT INTO facilities (facility) VALUES ('Tissue box');
 
 /* INSERT INTO rooms */
 
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00001, 'Single Bed', 145, 35, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00002, 'Single Bed', 200, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00003, 'Double Superior', 300, 20, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00004, 'Double Bed', 170, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00005, 'Double Bed', 230, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00006, 'Single Bed', 169, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00007, 'Double Bed', 300, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00008, 'Double Superior', 145, 15, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00009, 'Double Superior', 249, 30, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00010, 'Double Bed', 329, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00011, 'Single Bed', 145, 12, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00012, 'Double Superior', 170, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00013, 'Double Superior', 184, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00014, 'Suite', 500, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00015, 'Double Bed', 260, 5, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00016, 'Double Bed', 330, 35, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, offerPercent, status) VALUES (00017, 'Suite', 500, 10, 'Available');
-INSERT INTO rooms (numeroHabitacion, roomType, amenities, price, status) VALUES (00018, 'Double Superior', 170, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00001, 'Single Bed', 145, 35, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00002, 'Single Bed', 200, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00003, 'Double Superior', 300, 20, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00004, 'Double Bed', 170, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00005, 'Double Bed', 230, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00006, 'Single Bed', 169, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00007, 'Double Bed', 300, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00008, 'Double Superior', 145, 15, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00009, 'Double Superior', 249, 30, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00010, 'Double Bed', 329, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00011, 'Single Bed', 145, 12, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00012, 'Double Superior', 170, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00013, 'Double Superior', 184, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00014, 'Suite', 500, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00015, 'Double Bed', 260, 5, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00016, 'Double Bed', 330, 35, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (00017, 'Suite', 500, 10, 'Available');
+INSERT INTO rooms (numeroHabitacion, roomType, price, status) VALUES (00018, 'Double Superior', 170, 'Available');
 
 
 /* INSERT INTO images_relacion_rooms */
@@ -159,7 +159,7 @@ INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (9, 13
 INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (10, 5);
 INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (10, 14);
 INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (10, 8);
-INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (10, 10;
+INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (10, 10);
 INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (10, 11);
 INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (11, 1);
 INSERT INTO facilities_relacion_rooms (idHabitacion, idFacilities) VALUES (11, 2);
