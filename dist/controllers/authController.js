@@ -14,7 +14,7 @@ const postLogin = (req, res, next) => {
             }
             req.login(user, { session: false }, (error) => error
                 ? next(error)
-                : res.json(jsonwebtoken_1.default.sign({ user: { id: user.id, email: user.email } }, process.env.SECRET_TOKEN)));
+                : res.json(jsonwebtoken_1.default.sign({ user: { email: user.email } }, process.env.SECRET_TOKEN)));
         }
         catch (error) {
             return next(error);

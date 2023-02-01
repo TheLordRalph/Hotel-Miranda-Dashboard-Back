@@ -11,28 +11,19 @@ const bcrypt = require('bcrypt');
 const localStrategy = passport_local_1.default.Strategy;
 const JWTStrategy = passport_jwt_1.default.Strategy;
 const ExtractJwt = passport_jwt_1.default.ExtractJwt;
-let user = {
-    idUser: 1,
-    email: '',
-    password: '',
-};
 passport_1.default.use("login", new localStrategy({
     usernameField: "email",
     passwordField: "password",
 }, async (email, password, done) => {
     try {
         conection_1.connection.connect();
-        // const user: userIn = await sqlQuery('SELECT idUsers, email, password FROM users WHERE idUsers = 1', null)
-        // .then((user:userIn) => user);
         const user = await new Promise((resolve, reject) => {
-            conection_1.connection.query('SELECT idUsers, email, password FROM users WHERE idUsers = 1;', (err, rows) => {
+            conection_1.connection.query('SELECT email, password FROM users WHERE idUsers = 1;', (err, rows) => {
                 if (err)
                     reject(err);
-                console.log(rows[0]);
                 return resolve(rows[0]);
             });
         });
-        console.log(user);
         if (email === user.email && bcrypt.compareSync(password, user.password)) {
             return done(null, user, { message: "Logged in Successfully" });
         }
