@@ -9,7 +9,7 @@ roomsRouter.get("/", getRooms);
 roomsRouter.get("/:roomId", getRoom);
 
 // POST a new room (Create method)
-roomsRouter.post("/newRoom", postRoom);
+roomsRouter.post("/newroom", postRoom);
 
 // PUT a room (Update method)
 roomsRouter.put("/:roomId", putRoom);

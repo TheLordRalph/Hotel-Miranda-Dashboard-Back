@@ -2,14 +2,13 @@ import { Request, Response, NextFunction } from 'express';
 import connection from '../data/conection';
 
 interface roomsI {
-  idHabitacion: number,
   numeroHabitacion: number,
   roomType: string,
   price: number,
   offerPercent: number,
   status: string,
-  imagen: string[],
-  facilities: string[]
+  imagen: string,
+  facilities: string
 }
 
 export const getRooms = async (req:Request, res:Response, next: NextFunction) => {
@@ -99,14 +98,51 @@ export const getRoom = async (req:Request, res:Response, next: NextFunction) => 
   }
 };
 
-export const postRoom = (req:Request, res:Response, next: NextFunction) => {
-  // res.status(200).json(rooms);
+export const postRoom = async (req:Request, res:Response, next: NextFunction) => {
+  try {
+    const newRoom = req.body;
+    const query = `INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (${parseInt(newRoom.numeroHabitacion)}, '${newRoom.roomType}', ${parseInt(newRoom.price)}, ${parseInt(newRoom.offerPercent)}, '${newRoom.status}');`;
+    const createRoom = await new Promise<any>((resolve:any, reject:any) => {
+        connection.query(query, (err:any, rows:any) => {
+          if (err) reject(err);
+          return resolve(rows);
+        })
+    })
+    res.status(200).json(createRoom);
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const putRoom = (req:Request, res:Response, next: NextFunction) => {
-  // res.status(200).json(rooms);
+export const putRoom = async (req:Request, res:Response, next: NextFunction) => {
+  try {
+    const param = parseInt(req.params.roomId);
+
+    const query = `UPDATE rooms SET numeroHabitacion = ${parseInt(req.body.numeroHabitacion)}, roomType = '${req.body.roomType}', price = '${parseInt(req.body.price)}', offerPercent = '${parseInt(req.body.offerPercent)}', status = '${req.body.status}' WHERE idHabitacion = ${param};`;
+    let updateRoom = await new Promise<any>((resolve:any, reject:any) => {
+        connection.query(query, (err:any, rows:any) => {
+          if (err) reject(err);
+          return resolve(rows);
+        })
+    })
+    res.status(200).json(updateRoom);
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const deleteRoom = (req:Request, res:Response, next: NextFunction) => {
-  // res.status(200).json(rooms);
+export const deleteRoom = async (req:Request, res:Response, next: NextFunction) => {
+  try {
+    const param = parseInt(req.params.roomId);
+    const query = `DELETE FROM rooms WHERE idHabitacion = ${param};`;
+    let deleteRoom = await new Promise<any>((resolve:any, reject:any) => {
+        connection.query(query, (err:any, rows:any) => {
+          if (err) reject(err);
+          return resolve(rows);
+        })
+    })
+    res.status(200).json(deleteRoom);
+  } catch (error) {
+    next(error);
+  }
 };

@@ -11,7 +11,7 @@ roomsRouter.get("/", rooms_1.getRooms);
 // GET single room (Read method)
 roomsRouter.get("/:roomId", rooms_1.getRoom);
 // POST a new room (Create method)
-roomsRouter.post("/newRoom", rooms_1.postRoom);
+roomsRouter.post("/newroom", rooms_1.postRoom);
 // PUT a room (Update method)
 roomsRouter.put("/:roomId", rooms_1.putRoom);
 // DELETE single room (Delete method)

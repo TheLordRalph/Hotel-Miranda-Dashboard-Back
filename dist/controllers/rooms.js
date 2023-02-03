@@ -94,16 +94,58 @@ const getRoom = async (req, res, next) => {
     }
 };
 exports.getRoom = getRoom;
-const postRoom = (req, res) => {
-    // res.status(200).json(rooms);
+const postRoom = async (req, res, next) => {
+    try {
+        const newRoom = req.body;
+        const query = `INSERT INTO rooms (numeroHabitacion, roomType, price, offerPercent, status) VALUES (${parseInt(newRoom.numeroHabitacion)}, '${newRoom.roomType}', ${parseInt(newRoom.price)}, ${parseInt(newRoom.offerPercent)}, '${newRoom.status}');`;
+        const createRoom = await new Promise((resolve, reject) => {
+            conection_1.default.query(query, (err, rows) => {
+                if (err)
+                    reject(err);
+                return resolve(rows);
+            });
+        });
+        res.status(200).json(createRoom);
+    }
+    catch (error) {
+        next(error);
+    }
 };
 exports.postRoom = postRoom;
-const putRoom = (req, res) => {
-    // res.status(200).json(rooms);
+const putRoom = async (req, res, next) => {
+    try {
+        const param = parseInt(req.params.roomId);
+        const query = `UPDATE rooms SET numeroHabitacion = ${parseInt(req.body.numeroHabitacion)}, roomType = '${req.body.roomType}', price = '${parseInt(req.body.price)}', offerPercent = '${parseInt(req.body.offerPercent)}', status = '${req.body.status}' WHERE idHabitacion = ${param};`;
+        let updateRoom = await new Promise((resolve, reject) => {
+            conection_1.default.query(query, (err, rows) => {
+                if (err)
+                    reject(err);
+                return resolve(rows);
+            });
+        });
+        res.status(200).json(updateRoom);
+    }
+    catch (error) {
+        next(error);
+    }
 };
 exports.putRoom = putRoom;
-const deleteRoom = (req, res) => {
-    // res.status(200).json(rooms);
+const deleteRoom = async (req, res, next) => {
+    try {
+        const param = parseInt(req.params.roomId);
+        const query = `DELETE FROM rooms WHERE idHabitacion = ${param};`;
+        let deleteRoom = await new Promise((resolve, reject) => {
+            conection_1.default.query(query, (err, rows) => {
+                if (err)
+                    reject(err);
+                return resolve(rows);
+            });
+        });
+        res.status(200).json(deleteRoom);
+    }
+    catch (error) {
+        next(error);
+    }
 };
 exports.deleteRoom = deleteRoom;
 //# sourceMappingURL=rooms.js.map
